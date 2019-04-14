@@ -97,6 +97,81 @@ public void EndKnifeRound(bool swap) {
         }
       }
     }
+
+    // Swap custom team names/flags/logos/etc if team switches.
+    char teamname1[64];
+    char teamflag1[4];
+    char teamlogo1[8];
+    char teamscore1[4];
+    char teammatchstat1[64];
+    char teamname2[64];
+    char teamflag2[4];
+    char teamlogo2[8];
+    char teamscore2[4];
+    char teammatchstat2[64];
+
+    GetConVarString(FindConVar("mp_teamname_1"), teamname1, sizeof(teamname1));
+    GetConVarString(FindConVar("mp_teamflag_1"), teamflag1, sizeof(teamflag1));
+    GetConVarString(FindConVar("mp_teamlogo_1"), teamlogo1, sizeof(teamlogo1));
+    GetConVarString(FindConVar("mp_teamscore_1"), teamscore1, sizeof(teamscore1));
+    GetConVarString(FindConVar("mp_teammatchstat_1"), teammatchstat1, sizeof(teammatchstat1));
+    GetConVarString(FindConVar("mp_teamname_2"), teamname2, sizeof(teamname2));
+    GetConVarString(FindConVar("mp_teamflag_2"), teamflag2, sizeof(teamflag2));
+    GetConVarString(FindConVar("mp_teamlogo_2"), teamlogo2, sizeof(teamlogo2));
+    GetConVarString(FindConVar("mp_teamscore_2"), teamscore2, sizeof(teamscore2));
+    GetConVarString(FindConVar("mp_teammatchstat_2"), teammatchstat2, sizeof(teammatchstat2));
+
+    if (!StrEqual(teamname1, DEFAULT_CT_NAME, false) && !StrEqual(teamname1, DEFAULT_T_NAME, false)) {
+        ServerCommand("mp_teamname_2 \"%s\"", teamname1);
+    } else {
+        ServerCommand("mp_teamname_2 \"\"");
+    }
+    if (!StrEqual(teamflag1, "", false)) {
+        ServerCommand("mp_teamflag_2 \"%s\"", teamflag1);
+    } else {
+        ServerCommand("mp_teamflag_2 \"\"");
+    }
+    if (!StrEqual(teamlogo1, "", false)) {
+        ServerCommand("mp_teamlogo_2 \"%s\"", teamlogo1);
+    } else {
+        ServerCommand("mp_teamlogo_2 \"\"");
+    }
+    if (!StrEqual(teamscore1, "", false)) {
+        ServerCommand("mp_teamscore_2 \"%s\"", teamscore1);
+    } else {
+        ServerCommand("mp_teamscore_2 \"\"");
+    }
+    if (!StrEqual(teammatchstat1, "", false)) {
+        ServerCommand("mp_teammatchstat_2 \"%s\"", teammatchstat1);
+    } else {
+        ServerCommand("mp_teammatchstat_2 \"\"");
+    }
+
+    if (!StrEqual(teamname2, DEFAULT_CT_NAME, false) && !StrEqual(teamname2, DEFAULT_T_NAME, false)) {
+        ServerCommand("mp_teamname_1 \"%s\"", teamname2);
+    } else {
+        ServerCommand("mp_teamname_1 \"\"");
+    }
+    if (!StrEqual(teamflag2, "", false)) {
+        ServerCommand("mp_teamflag_1 \"%s\"", teamflag2);
+    } else {
+        ServerCommand("mp_teamflag_1 \"\"");
+    }
+    if (!StrEqual(teamlogo2, "", false)) {
+        ServerCommand("mp_teamlogo_1 \"%s\"", teamlogo2);
+    } else {
+        ServerCommand("mp_teamlogo_1 \"\"");
+    }
+    if (!StrEqual(teamscore2, "", false)) {
+        ServerCommand("mp_teamscore_1 \"%s\"", teamscore2);
+    } else {
+        ServerCommand("mp_teamscore_1 \"\"");
+    }
+    if (!StrEqual(teammatchstat2, "", false)) {
+        ServerCommand("mp_teammatchstat_1 \"%s\"", teammatchstat2);
+    } else {
+        ServerCommand("mp_teammatchstat_1 \"\"");
+    }
   }
 
   ChangeState(GameState_GoingLive);

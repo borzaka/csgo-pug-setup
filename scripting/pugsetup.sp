@@ -1978,6 +1978,23 @@ stock void EndMatch(bool execConfigs = true, bool doRestart = true) {
   if (doRestart) {
     RestartGame(1);
   }
+  
+  // Reset custom team names/flags/logos/etc to defaults.
+  ServerCommand("mp_teamname_1 \"\"");
+  ServerCommand("mp_teamflag_1 \"\"");
+  ServerCommand("mp_teamlogo_1 \"\"");
+  ServerCommand("mp_teamscore_1 \"\"");
+  ServerCommand("mp_teammatchstat_1 \"\"");
+  ServerCommand("mp_teamname_2 \"\"");
+  ServerCommand("mp_teamflag_2 \"\"");
+  ServerCommand("mp_teamlogo_2 \"\"");
+  ServerCommand("mp_teamscore_2 \"\"");
+  ServerCommand("mp_teammatchstat_2 \"\"");
+  
+  ServerCommand("mp_teamscore_max \"0\"");
+  ServerCommand("mp_teammatchstat_txt \"\"");
+  ServerCommand("mp_teamprediction_txt \"#SFUIHUD_Spectate_Predictions\"");
+  ServerCommand("mp_teamprediction_pct \"0\"");
 }
 
 public void SetupMapVotePool(bool excludeRecentMaps) {
